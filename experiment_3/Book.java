@@ -16,15 +16,24 @@ public class Book {
         
         dateOfPublication=LocalDate.parse("2020-01-01");
     }
-    public Book(String n,String a,double p,String isbn){
+    public Book(String n,String a,double p,String isbn) throws InvalidPriceException{
         name=n;
         author=a;
+        if(p<0){
+            throw new InvalidPriceException("Price cannot be negative");
+        }
         price=p;
         ISBN=isbn;
     }
-    public Book(String n,String a,String g,double p){
+    public Book(String n,String a,String g,double p )throws InvalidPriceException, InvalidGenreException{
+         if(p<0){
+            throw new InvalidPriceException("Price cannot be negative");
+        }
         name=n;
         author=a;
+        if(!g.equalsIgnoreCase("Fiction") && !g.equalsIgnoreCase("Autobiography") && !g.equalsIgnoreCase("Science") && !g.equalsIgnoreCase("History") && !g.equalsIgnoreCase("Life changer")){
+            throw new InvalidGenreException("Genre must be one of the following: Fiction, Autobiography, Science, History, Life changer");
+        }
         genre=g;
         price=p;
     }
