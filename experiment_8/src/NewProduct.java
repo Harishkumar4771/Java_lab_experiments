@@ -1,0 +1,12 @@
+package experiment_8;
+public class NewProduct implements Product{
+    private String name;
+
+    public NewProduct(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void displayDetails() {
+        Sys
+}
